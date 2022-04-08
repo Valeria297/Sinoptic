@@ -1,4 +1,4 @@
-package com.example.moon366
+package com.example.moon366.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.moon366.databinding.FragmentWeatherBinding
+import com.example.moon366.toast
 import org.json.JSONObject
 
 class WeatherFragment : Fragment() {
