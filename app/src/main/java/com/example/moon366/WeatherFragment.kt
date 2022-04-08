@@ -5,16 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.viewbinding.BuildConfig
-import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.moon366.databinding.FragmentWeatherBinding
-import org.json.JSONArray
 import org.json.JSONObject
-import java.io.FileInputStream
-import java.util.*
 
 class WeatherFragment : Fragment() {
 
@@ -35,14 +29,12 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val url = "https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=ea1b918de55d3aa06d5f25b23be3e359&units=metric"
-
         val queue = Volley.newRequestQueue(requireContext())
 
         with(binding) {
 
             button.setOnClickListener {
-                val stringReq = StringRequest(url,
+                val stringReq = StringRequest(URL,
                     { response ->
                         var strResp = response.toString()
                         val jsonObj = JSONObject(strResp)
@@ -83,5 +75,9 @@ class WeatherFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private val URL = "https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=ea1b918de55d3aa06d5f25b23be3e359&units=metric"
     }
 }
